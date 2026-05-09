@@ -1,0 +1,459 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 380px;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(145deg, #0f0c29 0%, #1a1040 40%, #24243e 100%);
+  color: #e8e0f0;
+}
+
+.container {
+  padding: 20px 18px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 18px;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #f9834e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+h3 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.section {
+  margin-bottom: 14px;
+}
+
+label {
+  display: block;
+  font-size: 12.5px;
+  margin-bottom: 5px;
+  color: #b8a9d4;
+  font-weight: 500;
+}
+
+textarea, input[type="text"], input[type="datetime-local"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+  color: #e8e0f0;
+  font-size: 13px;
+  outline: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+textarea:focus, input:focus {
+  border-color: rgba(240,147,251,0.5);
+  box-shadow: 0 0 0 3px rgba(240,147,251,0.1), 0 0 20px rgba(240,147,251,0.05);
+  background: rgba(255,255,255,0.06);
+}
+
+textarea {
+  resize: vertical;
+  font-family: 'Cascadia Code', 'Fira Code', monospace;
+  line-height: 1.5;
+}
+
+.hint {
+  font-size: 11px;
+  color: rgba(184,169,212,0.5);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.mode-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.mode-btn {
+  flex: 1;
+  padding: 10px 6px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  color: #8b7faa;
+  cursor: pointer;
+  font-size: 11.5px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.mode-btn:hover {
+  border-color: rgba(240,147,251,0.3);
+  color: #d0c0e8;
+  background: rgba(240,147,251,0.06);
+}
+
+.mode-btn.active {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(240,147,251,0.3);
+  font-weight: 600;
+}
+
+.mode-section {
+  display: none;
+  margin-bottom: 14px;
+}
+
+.mode-section.active {
+  display: block;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mode-section label {
+  margin-top: 10px;
+}
+
+.captcha-section {
+  margin: 14px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.custom-captcha {
+  width: 100%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 14px;
+  backdrop-filter: blur(8px);
+}
+
+.captcha-label {
+  font-size: 12.5px;
+  color: #b8a9d4;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.captcha-challenge {
+  font-size: 26px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: rgba(240,147,251,0.06);
+  border-radius: 8px;
+  letter-spacing: 3px;
+}
+
+#captcha-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  background: rgba(0,0,0,0.2);
+  color: #e8e0f0;
+  font-size: 15px;
+  outline: none;
+  text-align: center;
+  margin-top: 8px;
+  transition: all 0.3s;
+}
+
+#captcha-input:focus {
+  border-color: rgba(240,147,251,0.4);
+  box-shadow: 0 0 0 3px rgba(240,147,251,0.08);
+}
+
+.captcha-verify-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px;
+  border: 1px solid rgba(240,147,251,0.4);
+  border-radius: 8px;
+  background: rgba(240,147,251,0.08);
+  color: #f093fb;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.captcha-verify-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(240,147,251,0.3);
+}
+
+.captcha-verify-btn:disabled {
+  border-color: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.15);
+  cursor: not-allowed;
+  background: rgba(255,255,255,0.02);
+}
+
+.captcha-status {
+  font-size: 12px;
+  margin-top: 8px;
+  text-align: center;
+  min-height: 16px;
+}
+
+.lock-btn {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(245,87,108,0.25);
+}
+
+.lock-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 25px rgba(245,87,108,0.4);
+}
+
+.lock-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.lock-btn:disabled {
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.2);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.lock-btn.cooldown {
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(253,160,133,0.3);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(0.98); }
+}
+
+.status {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 8px;
+  color: #fda085;
+  min-height: 16px;
+  font-weight: 500;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin: 16px 0;
+}
+
+.lock-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.lock-item:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(240,147,251,0.15);
+}
+
+.lock-item-info {
+  flex: 1;
+}
+
+.lock-item-domain {
+  font-weight: 700;
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 13px;
+}
+
+.lock-item-time {
+  font-size: 11px;
+  color: rgba(184,169,212,0.6);
+  margin-top: 3px;
+}
+
+.unlock-btn {
+  padding: 5px 12px;
+  border: 1px solid rgba(240,147,251,0.3);
+  border-radius: 8px;
+  background: rgba(240,147,251,0.06);
+  color: #f093fb;
+  cursor: pointer;
+  font-size: 11.5px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.unlock-btn:hover {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 3px 10px rgba(240,147,251,0.3);
+}
+
+#active-locks {
+  max-height: 160px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(240,147,251,0.2) transparent;
+}
+
+#active-locks::-webkit-scrollbar {
+  width: 4px;
+}
+
+#active-locks::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#active-locks::-webkit-scrollbar-thumb {
+  background: rgba(240,147,251,0.2);
+  border-radius: 4px;
+}
+
+.no-locks {
+  font-size: 12px;
+  color: rgba(184,169,212,0.35);
+  text-align: center;
+  padding: 12px;
+  font-style: italic;
+}
+
+/* Pine Coin Bar */
+.coin-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(6px);
+}
+
+.coin-icon {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 0 6px rgba(255,193,7,0.5));
+  vertical-align: middle;
+}
+
+.coin-icon-sm {
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+  margin-right: 2px;
+}
+
+.coin-label {
+  font-size: 13px;
+  color: rgba(184,169,212,0.7);
+  font-weight: 500;
+}
+
+.coin-value {
+  font-size: 20px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  min-width: 30px;
+  text-align: center;
+}
+
+/* Coin unlock button in lock items */
+.coin-unlock-btn {
+  padding: 5px 10px;
+  border: 1px solid rgba(67,233,123,0.3);
+  border-radius: 8px;
+  background: rgba(67,233,123,0.08);
+  color: #43e97b;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.coin-unlock-btn:hover {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 3px 10px rgba(67,233,123,0.3);
+}
+
+.coin-unlock-btn:disabled {
+  border-color: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.15);
+  cursor: not-allowed;
+  background: rgba(255,255,255,0.02);
+}
+
+/* Coin info section */
+.coin-info {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: rgba(67,233,123,0.04);
+  border: 1px solid rgba(67,233,123,0.1);
+  border-radius: 10px;
+}
+
+.coin-info p {
+  font-size: 11.5px;
+  color: rgba(184,169,212,0.55);
+  line-height: 1.6;
+}
+
+.lock-item-buttons {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}

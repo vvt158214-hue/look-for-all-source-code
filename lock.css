@@ -1,0 +1,291 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background: #0a0a1a;
+  color: #e8e0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  filter: brightness(0.25) saturate(0.7);
+}
+
+#bg-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, rgba(15,12,41,0.75) 0%, rgba(36,36,62,0.75) 50%, rgba(26,16,64,0.75) 100%);
+}
+
+.lock-container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 50px 40px;
+  max-width: 650px;
+  width: 90%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 24px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+}
+
+.lock-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+  animation: float 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(240,147,251,0.3));
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(-2deg); }
+  75% { transform: translateY(-8px) rotate(2deg); }
+}
+
+h1 {
+  font-size: 30px;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #f9834e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.domain {
+  font-size: 15px;
+  color: rgba(184,169,212,0.7);
+  margin-bottom: 32px;
+  font-weight: 400;
+}
+
+/* Pine Coin display on lock page */
+.coin-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 28px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(67,233,123,0.15);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+}
+
+.coin-icon-lock {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 0 8px rgba(255,193,7,0.5));
+  vertical-align: middle;
+}
+
+.coin-text {
+  font-size: 15px;
+  color: rgba(232,224,240,0.8);
+}
+
+.coin-text strong {
+  font-size: 20px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.coin-unlock-lock-btn {
+  padding: 8px 16px;
+  border: 1px solid rgba(67,233,123,0.3);
+  border-radius: 10px;
+  background: rgba(67,233,123,0.08);
+  color: #43e97b;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.coin-unlock-lock-btn:hover {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(67,233,123,0.3);
+  transform: translateY(-1px);
+}
+
+.coin-unlock-lock-btn:disabled {
+  border-color: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.15);
+  cursor: not-allowed;
+  background: rgba(255,255,255,0.02);
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.countdown-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(240,147,251,0.15);
+  border-radius: 16px;
+  padding: 18px 22px;
+  min-width: 85px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+}
+
+.countdown-item:hover {
+  border-color: rgba(240,147,251,0.3);
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-2px);
+}
+
+.countdown-value {
+  display: block;
+  font-size: 40px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+
+.countdown-label {
+  display: block;
+  font-size: 11px;
+  color: rgba(184,169,212,0.5);
+  margin-top: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+}
+
+.quote-section {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 28px;
+  min-height: 90px;
+  backdrop-filter: blur(5px);
+  transition: all 0.5s ease;
+}
+
+.quote {
+  font-size: 16px;
+  font-style: italic;
+  color: rgba(232,224,240,0.85);
+  line-height: 1.7;
+  margin-bottom: 10px;
+  transition: opacity 0.5s ease;
+}
+
+.quote-author {
+  font-size: 13px;
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: right;
+  font-weight: 600;
+}
+
+.upload-section {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  background: rgba(240,147,251,0.08);
+  border: 1px solid rgba(240,147,251,0.2);
+  border-radius: 12px;
+  color: #f093fb;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.upload-btn:hover {
+  background: rgba(240,147,251,0.15);
+  border-color: rgba(240,147,251,0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(240,147,251,0.15);
+}
+
+.upload-btn input {
+  display: none;
+}
+
+.unlocked-msg {
+  font-size: 28px;
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Particle animation background */
+.particle {
+  position: fixed;
+  border-radius: 50%;
+  background: rgba(240,147,251,0.15);
+  pointer-events: none;
+  z-index: 0;
+  animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head><title>Icon Generator</title></head>
+<body>
+<h2>Click button to generate icons, then right-click each image to save as PNG</h2>
+<button onclick="generate()">Generate Icons</button>
+<br><br>
+<canvas id="c16" width="16" height="16"></canvas> icon16.png
+<br>
+<canvas id="c48" width="48" height="48"></canvas> icon48.png
+<br>
+<canvas id="c128" width="128" height="128"></canvas> icon128.png
+<script>
+function generate() {
+  [16,48,128].forEach(size => {
+    const canvas = document.getElementById('c' + size);
+    const ctx = canvas.getContext('2d');
+    // Background
+    ctx.fillStyle = '#1a1a2e';
+    ctx.beginPath();
+    ctx.roundRect(0, 0, size, size, size * 0.15);
+    ctx.fill();
+    // Lock body
+    const cx = size / 2, cy = size * 0.6;
+    const bw = size * 0.35, bh = size * 0.28;
+    ctx.fillStyle = '#e94560';
+    ctx.fillRect(cx - bw/2, cy, bw, bh);
+    // Lock shackle
+    ctx.strokeStyle = '#e94560';
+    ctx.lineWidth = size * 0.06;
+    ctx.beginPath();
+    ctx.arc(cx, cy, bw * 0.4, Math.PI, 0);
+    ctx.stroke();
+    // Keyhole
+    ctx.fillStyle = '#1a1a2e';
+    ctx.beginPath();
+    ctx.arc(cx, cy + bh * 0.3, size * 0.04, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillRect(cx - size * 0.015, cy + bh * 0.3, size * 0.03, size * 0.08);
+  });
+}
+</script>
+</body>
+</html>

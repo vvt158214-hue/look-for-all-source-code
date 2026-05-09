@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Lock for All!</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🔒 Lock for All!</h1>
+
+    <div class="coin-bar">
+      <img class="coin-icon" src="coin.svg" alt="Pine Coin">
+      <span class="coin-label">Pine Coin:</span>
+      <span class="coin-value" id="pine-coin-count">0</span>
+    </div>
+
+    <div class="section">
+      <label>Domain (mỗi dòng 1 domain):</label>
+      <textarea id="domains" placeholder="youtube.com&#10;facebook.com&#10;tiktok.com" rows="4"></textarea>
+    </div>
+
+    <div class="section">
+      <label>Chế độ khóa:</label>
+      <div class="mode-buttons">
+        <button class="mode-btn active" data-mode="instant">⚡ Khóa ngay</button>
+        <button class="mode-btn" data-mode="timeout">⏳ Hết giờ rồi khóa</button>
+        <button class="mode-btn" data-mode="calendar">📅 Lịch khóa</button>
+      </div>
+    </div>
+
+    <!-- Instant Lock -->
+    <div id="instant-section" class="mode-section active">
+      <label>Thời gian khóa (VD: 1y 2mo 3d 4h 5m 6s):</label>
+      <input type="text" id="instant-duration" placeholder="1h 30m">
+      <div class="hint">y=năm, mo=tháng, d=ngày, h=giờ, m=phút, s=giây</div>
+    </div>
+
+    <!-- Timeout Lock -->
+    <div id="timeout-section" class="mode-section">
+      <label>Thời gian được sử dụng:</label>
+      <input type="text" id="timeout-allow" placeholder="30m">
+      <label>Thời gian khóa sau khi hết giờ:</label>
+      <input type="text" id="timeout-lock" placeholder="2h">
+      <div class="hint">y=năm, mo=tháng, d=ngày, h=giờ, m=phút, s=giây</div>
+    </div>
+
+    <!-- Calendar Lock -->
+    <div id="calendar-section" class="mode-section">
+      <label>Khóa cho đến:</label>
+      <input type="datetime-local" id="calendar-date">
+    </div>
+
+    <div class="captcha-section">
+      <div id="captcha-container">
+        <div class="custom-captcha">
+          <div class="captcha-label">Xác nhận bạn không phải robot:</div>
+          <div class="captcha-challenge" id="captcha-challenge"></div>
+          <input type="text" id="captcha-input" placeholder="Nhập kết quả" autocomplete="off">
+          <button id="captcha-verify" class="captcha-verify-btn">Xác nhận</button>
+          <div id="captcha-status" class="captcha-status"></div>
+        </div>
+      </div>
+    </div>
+
+    <button id="lock-btn" class="lock-btn" disabled>Khóa!</button>
+    <div id="lock-status" class="status"></div>
+
+    <hr>
+
+    <div class="section">
+      <h3>Đang khóa:</h3>
+      <div id="active-locks"></div>
+    </div>
+
+    <div class="coin-info">
+      <p><img class="coin-icon-sm" src="coin.svg" alt=""> 1 phút khóa = 1 Pine Coin (khi hết hạn)</p>
+      <p>🔑 5 Pine Coin = Mở khóa 1 domain ngay</p>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

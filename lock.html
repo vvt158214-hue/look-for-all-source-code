@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔒 Đã Khóa - Lock for All!</title>
+  <link rel="stylesheet" href="lock.css">
+</head>
+<body>
+  <div id="bg-overlay"></div>
+  <audio id="bg-music" loop></audio>
+
+  <div class="lock-container">
+    <div class="lock-icon">🔒</div>
+    <h1>Website Đã Bị Khóa</h1>
+    <p class="domain" id="domain-text"></p>
+
+    <div class="coin-display">
+      <img class="coin-icon-lock" src="coin.svg" alt="Pine Coin">
+      <span class="coin-text">Pine Coin: <strong id="lock-coin-count">0</strong></span>
+      <button class="coin-unlock-lock-btn" id="coin-unlock-btn">🔑 Mở khóa (5 coin)</button>
+    </div>
+
+    <div class="countdown" id="countdown">
+      <div class="countdown-item">
+        <span class="countdown-value" id="cd-days">0</span>
+        <span class="countdown-label">Ngày</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-value" id="cd-hours">0</span>
+        <span class="countdown-label">Giờ</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-value" id="cd-minutes">0</span>
+        <span class="countdown-label">Phút</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-value" id="cd-seconds">0</span>
+        <span class="countdown-label">Giây</span>
+      </div>
+    </div>
+
+    <div class="quote-section">
+      <p class="quote" id="quote-text"></p>
+      <p class="quote-author" id="quote-author"></p>
+    </div>
+
+    <div class="upload-section">
+      <label class="upload-btn" id="upload-music-btn">
+        🎵 Đổi nhạc
+        <input type="file" id="upload-music" accept="audio/mp3,audio/mpeg,audio/*" hidden>
+      </label>
+      <label class="upload-btn" id="upload-bg-btn">
+        🖼️ Đổi nền
+        <input type="file" id="upload-bg" accept="image/png,image/jpeg,image/*" hidden>
+      </label>
+    </div>
+  </div>
+
+  <script src="quotes.js"></script>
+  <script src="lock.js"></script>
+</body>
+</html>
